@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bluto Stream - Timestamp</title>
+		<!-- <link href="icon.png" rel="icon" type="image/png" sizes="32x32" /> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#holder {
+				display: flex;
+				justify-content: flex-end;
+    			flex-direction: row;
+    			gap: 15px;
+			}
+
+			#the-fucking-time {
+				margin-top: -13px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="holder">
+			<p class="label" id="the-fucking-time">loading...</p>
+			<span style="font-size: 38px; color: #71A6A1" class="material-symbols-outlined" id="the-fucking-weather">nights_stay</span>
+		</div>
+
+		<!-------- SCRIPTS -------->
+
+		<!-- PACKAGES -->
+		<script src="blulib.js"></script>
+		<script src="socket.io.js"></script>
+		<script src="moment.js"></script>
+
+		<!-- SOURCE -->
+		<script src="socket.js"></script>
+		<script src="timestamp.js"></script>
+	</body>
+</html>

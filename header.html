@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bluto Stream - Header</title>
+		<!-- <link href="icon.png" rel="icon" type="image/png" sizes="32x32" /> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#container {
+			    display: flex;
+			    gap: 8px;
+			    align-items: flex-end;
+			}
+
+			#header {
+				color: #024aca;
+/*				opacity: 0.5;*/
+				background: none;
+				border: none;
+				width: 100vw;
+				overflow: clip;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-style: normal;
+			}
+
+			#icon {
+			    width: 40px;
+			    height: 40px;
+			    top: 2.5px;
+			    position: relative;
+			}
+
+			.emoji {
+			  --size: 27px;
+			  width: var(--size);
+			  height: var(--size);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<img id="icon">
+			<p id="header" class="label"> </p>
+		</div>
+
+		<!-------- SCRIPTS -------->
+
+		<!-- PACKAGES -->
+		<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+		<script src="blulib.js"></script>
+		<script src="socket.io.js"></script>
+		<script src="moment.js"></script>
+
+		<!-- SOURCE -->
+		<script src="socket.js"></script>
+		<script src="header.js"></script>
+	</body>
+</html>

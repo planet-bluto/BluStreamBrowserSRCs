@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bluto Stream - Now Playing</title>
+		<!-- <link href="icon.png" rel="icon" type="image/png" sizes="32x32" /> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			body {
+				width: 100vw;
+				height: 100vh;
+				font-family: Comfortaa;
+				font-weight: bold;
+			}
+
+			#cont {
+			    display: flex;
+			    align-items: flex-end;
+			    gap: 30px;
+			    width: calc(100vw - (30px * 2));
+			    height: calc(450px - 60px);
+			    padding: 30px;
+			}
+
+			#song-title-auth {
+				width: 100%;
+				--font-scale: 0.8;
+				font-size: calc(64px * var(--font-scale));
+				font-style: normal;
+			}
+
+			#song-title {
+			    display: -webkit-box;
+			    -webkit-box-orient: vertical;
+			    text-overflow: ellipsis;
+/*			    max-height: 140px;*/
+			    width: 100%;
+			    overflow: hidden;
+			    -webkit-line-clamp: 2;
+			}
+
+			#thumbnail-cont {
+			    display: flex;
+			    position: relative;
+			    top: 200px;
+			    --whole-size: 600px;
+			    width: var(--whole-size);
+			    height: var(--whole-size);
+			    margin-left: calc(((var(--whole-size) / 2) + 30px) * -1);
+			    /* margin-bottom: -300px; */
+			}
+
+			#song-thumbnail-overlay {
+				z-index: 10;
+				position: relative;
+				width: var(--whole-size);
+				height: var(--whole-size);
+			    border-radius: 50%;	
+			    margin: 0px;
+			}
+
+			#song-thumbnail {
+			    z-index: 5;
+			    position: relative;
+			    --size: 0.7;
+			    --a_size: calc(100% * var(--size));
+			    right: calc((var(--whole-size) / 2) + (var(--a_size) / 2));
+			    top: calc((var(--whole-size) / 2) - (var(--a_size) / 2));
+			    width: calc(var(--whole-size) * var(--size));
+			    height: calc(var(--whole-size) * var(--size));
+			    background: #22272d;
+			    border-radius: 50%;
+/*			    animation-duration: 8000ms;
+			    animation-iteration-count: infinite;
+			    animation-timing-function: linear;*/
+			    object-fit: cover;
+			}
+
+/*			#song-thumbnail[playing=true] { animation-name: spin; }*/
+
+			@keyframes spin {
+					from {
+							transform:rotate(0deg);
+					}
+					to {
+							transform:rotate(360deg);
+					}
+			}
+
+			#song-author {
+			    opacity: 65%;
+			    overflow: hidden;
+			    overflow-wrap: anywhere;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    width: calc(100vw - 360px)
+			}
+
+			#song-progress {
+				width: calc(100% - 30px);
+				height: 32px;
+				border-radius: 32px;
+				background: #151515;
+				margin-top: 30px;
+				margin-bottom: 70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="cont">
+			<div id="thumbnail-cont">
+				<img id="song-thumbnail-overlay" src="assets/thumbnail-overylay.png">
+				<img id="song-thumbnail">
+			</div>
+			<div id="song-title-auth">
+				<p id="song-title"></p>
+				<p id="song-author"></p>
+				<div id="song-progress"></div>
+			</div>
+		</div>
+
+		<!-------- SCRIPTS -------->
+
+		<!-- PACKAGES -->
+		<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+		<script src="blulib.js"></script>
+		<script src="socket.io.js"></script>
+		<script src="moment.js"></script>
+
+		<!-- SOURCE -->
+		<!-- <script src="socket.js"></script> -->
+		<script src="nowplaying.js"></script>
+	</body>
+</html>

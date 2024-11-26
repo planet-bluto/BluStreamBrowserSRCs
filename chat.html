@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Bluto Stream - Chat</title>
+		<!-- <link href="icon.png" rel="icon" type="image/png" sizes="32x32" /> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			@font-face {
+			    font-family: Comfortaa;
+			    src: url("assets/fonts/Comfortaa-Bold.ttf");
+			}
+
+
+			:root {
+				--scaling: 0.8;
+			}
+
+			body {
+				font-family: Comfortaa;
+				font-size: calc(27px * var(--scaling));
+			}
+
+			/* width */
+			::-webkit-scrollbar {
+			  display: none;
+			}
+
+			/* Track */
+			::-webkit-scrollbar-track {
+			  display: none;
+			}
+			 
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+			  display: none;
+			}
+
+			::-webkit-scrollbar-corner {
+			  display: none;
+			}
+
+			@keyframes flashing {
+			  0% {
+			    border-color: #024aca;
+			  }
+			  50% {
+			    border-color: #5BA8FF;
+			  }
+			  100% {
+			    border-color: #024aca;
+			  }
+			}
+
+			#messages {
+			    display: flex;
+			    flex-direction: column;
+			    gap: 25px;
+			    width: calc(100vw - 8px);
+			    height: 100vh;
+/*			    overflow: scroll;*/
+			    padding-top: 25px;
+/*			    padding-bottom: 30px;*/
+/*			    padding-left: 8px;*/
+			}
+
+			.message-containter {
+					--border-color: #252525;
+
+			    display: flex;
+			    position: relative;
+			    left: -24px;
+			    flex-direction: row;
+			    align-items: flex-start;
+			    justify-content: flex-start;
+			    gap: 15px;
+			    padding-left: 16px;
+			    padding-bottom: 8px;
+			    border: 5px var(--border-color) solid;
+			    border-radius: 24px;
+			    background: #151515;
+			}
+
+			.message-author-container {
+			    display: flex;
+			    top: -26px;
+			    position: absolute;
+			    align-content: center;
+			    left: 32px;
+			}
+
+			.message-badge-container {
+			    display: flex;
+			    gap: 8px;
+			    top: 11px;
+			    position: relative;
+			}
+
+			.message-badge {
+				width: 24px;
+				height: 24px;
+				object-fit: contain;
+			}
+
+			.message-author {
+			    position: absolute;
+			    font-family: JUNEVILLE;
+			    font-size: 25px;
+			    color: #fff;
+			    --badges-width: 90px;
+			    left: calc(8px + var(--badges-width));
+/*				text-wrap: nowrap;*/
+			    text-overflow: ellipsis;
+			    overflow: inherit;
+			    max-width: 100px;
+			    white-space: nowrap;
+			}
+
+			.message-author[stroke] {
+			    position: absolute;
+			    color: #151515;
+			    left: calc(8px + var(--badges-width));
+			    -webkit-text-stroke: 8px #151515;
+			}
+
+			.message-text {
+				color: #ffffff4c;
+			    margin-left: 32px;
+			    width: calc(100% - 32px - 12px);
+			}
+
+/*			.message-containter[important=true] { opacity: 1;  }*/
+			.message-containter[flashing="true"] { animation: flashing 0.75s ease-in-out infinite; }
+			/* .message-containter[blubot=true] { border-color: #0A98AC; }*/
+			/* .message-containter[redeem=true] { border-color: var(--redeem-color); } */
+
+/*			.message-containter[important=false] > .message-right-container > .message-text {
+				color: #ffffff4c;
+			}*/
+
+			.message-platform {
+			    /* display: none; */
+			    position: absolute;
+			    width: calc(35px * var(--scaling));
+			    height: calc(35px * var(--scaling));
+			    top: -8px;
+			    scale: 1.5;
+			    right: calc(-15px * var(--scaling));
+			    image-rendering: pixelated;
+			    margin-left: 8px;
+			    object-fit: contain;
+			}
+
+			.message-right-container {
+				padding-top: 8px;
+				font-style: normal;
+				margin-top: 5px;
+				width: 100%;
+			}
+
+			.emoji {
+				width: calc(40px * var(--scaling));
+				height: calc(40px * var(--scaling));
+				top: calc(12px* var(--scaling));
+				position: relative;
+				margin-top: -5px;
+				image-rendering: pixelated;
+				object-fit: contain;
+			}
+
+			.explosion {
+				position: absolute;
+				z-index: 1000;
+				--size: 250px;
+				width: var(--size);
+				height: var(--size);
+				--x: 50vw;
+				--y: 0px;
+				top: calc((var(--size) / -2) + var(--y));
+				left: calc((var(--size) / -2) + var(--x));
+			}
+		</style>
+	</head>
+	<body>
+		<div id="messages"></div>
+
+		<!-------- SCRIPTS -------->
+
+		<!-- PACKAGES -->
+		<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+		<script src="blulib.js"></script>
+		<script src="socket.io.js"></script>
+		<script src="moment.js"></script>
+
+		<!-- SOURCE -->
+		<script src="socket.js"></script>
+		<script src="sound.js"></script>
+		<script src="chat.js"></script>
+	</body>
+</html>
