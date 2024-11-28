@@ -51,7 +51,7 @@ messages.watch({childList: true}, (mutation) => {
 	var targetScroll = 0
 	tween_int = tween(200*durationPerc, EASE_OUT_QUART, (perc) => {
 		var x = lerp(currScroll, targetScroll, perc)
-		print(x)
+		// print(x)
 		// messagesElem.scrollTop = x
 		messagesElem.style.setProperty("margin-top", `-${x}px`)
 	})
@@ -137,12 +137,12 @@ function appendMessage(message_payload) {
 	message_header_container.addChild(badge_container)
 
 	var message_header = new Elem("p")
-	message_header.text = (message_payload.style.header_format ? message_payload.header : message_payload.header)
+	message_header.text = (message_payload.style.header_format ? format(message_payload.header) : message_payload.header)
 	message_header.style = `color: ${message_payload.style.header_color}`
 	message_header.classes.add("message-author")
 
 	var message_header_stroke = new Elem("p")
-	message_header_stroke.text = (message_payload.style.header_format ? message_payload.header : message_payload.header)
+	message_header_stroke.text = (message_payload.style.header_format ? format(message_payload.header) : message_payload.header)
 	message_header_stroke.style = `color: ${message_payload.style.header_color}`
 	message_header_stroke.classes.add("message-author")
 	message_header_stroke.setAttr("stroke")
